@@ -25,6 +25,8 @@ function Navbar() {
               href={BOT_LINK}
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Подключить VPN через Telegram"
+              title="Перейти в Telegram бота PersikVPN"
               className="inline-flex items-center justify-center px-5 py-2.5 text-sm font-medium text-white bg-peach-500 hover:bg-peach-600 rounded-full transition-colors shadow-sm hover:shadow-md"
             >
               Подключить
@@ -55,20 +57,21 @@ function Hero() {
             Стабильная работа без перебоев
           </span>
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 tracking-tight mb-8">
-            Безопасный интернет <br className="hidden sm:block" />
+            Безопасный VPN <br className="hidden sm:block" />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-peach-500 to-peach-700">на высоких скоростях с PersikVPN</span>
           </h1>
           <p className="text-lg sm:text-xl text-gray-600 mb-10 leading-relaxed max-w-2xl mx-auto">
-            Быстрый, безопасный и надежный VPN прямо в Telegram. Наслаждайтесь высокой скоростью, смотрите видео в 4K и защищайте свои данные в один клик.
+            Быстрый, анонимный и надежный VPN прямо в Telegram. Наслаждайтесь высокой скоростью, смотрите видео в 4K и защищайте свои личные данные в один клик на iOS, Android и ПК.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a
               href={BOT_LINK}
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Открыть Telegram бота"
               className="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 text-base font-bold text-white bg-peach-500 hover:bg-peach-600 rounded-full transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5 gap-2"
             >
-              <Send className="w-5 h-5" />
+              <Send className="w-5 h-5" aria-hidden="true" />
               Открыть в Telegram
             </a>
             <a
@@ -240,12 +243,12 @@ function HowItWorks() {
 function FAQ() {
   const faqs = [
     {
-      question: "Что такое PersikVPN?",
-      answer: "PersikVPN — это современный сервис для защиты личных данных в сети. Мы используем передовые протоколы шифрования, которые обеспечивают высокую скорость и стабильность соединения, маскируя ваш трафик."
+      question: "Что такое PersikVPN и зачем он нужен?",
+      answer: "PersikVPN — это современный VPN-сервис для защиты личных данных в сети. Мы используем передовые протоколы шифрования, которые обеспечивают высокую скорость и стабильность соединения, скрывая ваш реальный IP-адрес и маскируя трафик от провайдеров."
     },
     {
-      question: "На каких устройствах работает ваш VPN?",
-      answer: "Наш VPN работает практически на всех современных устройствах: смартфонах (iOS, Android), компьютерах (Windows, macOS, Linux) и даже на некоторых роутерах. Бот выдаст подробную инструкцию по настройке для вашего устройства."
+      question: "На каких устройствах работает ваш VPN (iOS, Android, Windows)?",
+      answer: "Наш VPN работает практически на всех современных устройствах: смартфонах (Apple iPhone iOS, Android), компьютерах (Windows, macOS, Linux) и даже на некоторых роутерах. Бот выдаст подробную инструкцию по настройке для вашего устройства."
     },
     {
       question: "Это бесплатно?",
