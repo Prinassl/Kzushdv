@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import { Shield, Zap, Globe, Smartphone, ChevronDown, Send, CheckCircle2 } from 'lucide-react';
+import { Shield, Zap, Globe, Smartphone, ChevronDown, Send, CheckCircle2, Check, X, Minus } from 'lucide-react';
 import { useState } from 'react';
 
 const BOT_LINK = "https://t.me/persik_vpnbot?start=utm_SEO";
@@ -17,6 +17,7 @@ function Navbar() {
           </div>
           <div className="hidden md:flex items-center gap-8">
             <a href="#features" className="text-sm font-medium text-gray-600 hover:text-peach-600 transition-colors">Преимущества</a>
+            <a href="#comparison" className="text-sm font-medium text-gray-600 hover:text-peach-600 transition-colors">Сравнение</a>
             <a href="#how-it-works" className="text-sm font-medium text-gray-600 hover:text-peach-600 transition-colors">Как начать</a>
             <a href="#faq" className="text-sm font-medium text-gray-600 hover:text-peach-600 transition-colors">Вопросы</a>
           </div>
@@ -149,6 +150,113 @@ function Features() {
               <p className="text-gray-600 leading-relaxed">{feature.description}</p>
             </motion.div>
           ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Comparison() {
+  const criteria = [
+    {
+      name: "Стабильное соединение",
+      persik: { text: "Да, современные протоколы", icon: "check" },
+      western: { text: "Частые сбои", icon: "x" },
+      free: { text: "Постоянные обрывы", icon: "x" }
+    },
+    {
+      name: "Скорость",
+      persik: { text: "Без ограничений (до 1 Гбит/с)", icon: "check" },
+      western: { text: "Высокая", icon: "check" },
+      free: { text: "Сильно ограничена", icon: "x" }
+    },
+    {
+      name: "Локации серверов",
+      persik: { text: "Оптимальные для РФ (Европа)", icon: "check" },
+      western: { text: "Сотни стран (многие недоступны)", icon: "minus" },
+      free: { text: "1-2 перегруженные локации", icon: "x" }
+    },
+    {
+      name: "Оплата картами РФ",
+      persik: { text: "Да, любые банки", icon: "check" },
+      western: { text: "Только крипта/иностр. карты", icon: "x" },
+      free: { text: "Не требуется", icon: "minus" }
+    },
+    {
+      name: "Конфиденциальность",
+      persik: { text: "Строгая политика No-Logs", icon: "check" },
+      western: { text: "Зависит от сервиса", icon: "minus" },
+      free: { text: "Продают данные пользователей", icon: "x" }
+    },
+    {
+      name: "Удобство настройки",
+      persik: { text: "2 клика через Telegram", icon: "check" },
+      western: { text: "Нужно скачивать приложение", icon: "minus" },
+      free: { text: "Обилие навязчивой рекламы", icon: "x" }
+    },
+    {
+      name: "Цена",
+      persik: { text: "Доступная", icon: "check" },
+      western: { text: "Высокая (от $5-10/мес)", icon: "x" },
+      free: { text: "Бесплатно (оплата вашими данными)", icon: "minus" }
+    }
+  ];
+
+  const renderIcon = (type: string) => {
+    if (type === 'check') return <Check className="w-5 h-5 text-green-500" />;
+    if (type === 'x') return <X className="w-5 h-5 text-red-500" />;
+    return <Minus className="w-5 h-5 text-gray-400" />;
+  };
+
+  return (
+    <section id="comparison" className="py-20 bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <h2 className="text-3xl font-bold text-gray-900 mb-4">Честное сравнение</h2>
+          <p className="text-lg text-gray-600">Почему пользователи выбирают PersikVPN вместо крупных брендов и бесплатных сервисов.</p>
+        </div>
+        
+        <div className="overflow-x-auto pb-8">
+          <div className="min-w-[800px]">
+            <div className="grid grid-cols-4 gap-4 mb-4 items-end">
+              <div className="p-4 text-left text-gray-500 font-medium">Параметры</div>
+              <div className="bg-gradient-to-br from-peach-400 to-peach-600 text-white rounded-t-2xl p-4 text-center shadow-lg relative">
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white text-peach-600 text-xs font-bold px-3 py-1 rounded-full shadow-sm whitespace-nowrap">
+                  Ваш выбор
+                </div>
+                <span className="font-bold text-xl">PersikVPN</span>
+              </div>
+              <div className="p-4 text-center text-gray-900 font-bold text-lg bg-gray-50 rounded-t-2xl">Западные платные VPN</div>
+              <div className="p-4 text-center text-gray-900 font-bold text-lg bg-gray-50 rounded-t-2xl">Бесплатные VPN</div>
+            </div>
+
+            <div className="flex flex-col gap-2">
+              {criteria.map((item, index) => (
+                <div key={index} className="grid grid-cols-4 gap-4 items-center">
+                  <div className="p-4 text-gray-900 font-medium border-b border-gray-100">{item.name}</div>
+                  <div className="p-4 text-center bg-peach-50 border-x border-b border-peach-100 flex flex-col items-center justify-center gap-1 h-full">
+                    {renderIcon(item.persik.icon)}
+                    <span className="text-sm font-semibold text-gray-900">{item.persik.text}</span>
+                  </div>
+                  <div className="p-4 text-center flex flex-col items-center justify-center gap-1 border-b border-gray-100 bg-gray-50/50 h-full">
+                    {renderIcon(item.western.icon)}
+                    <span className="text-sm text-gray-600">{item.western.text}</span>
+                  </div>
+                  <div className="p-4 text-center flex flex-col items-center justify-center gap-1 border-b border-gray-100 bg-gray-50/50 h-full">
+                    {renderIcon(item.free.icon)}
+                    <span className="text-sm text-gray-600">{item.free.text}</span>
+                  </div>
+                </div>
+              ))}
+              
+              <div className="grid grid-cols-4 gap-4">
+                <div></div>
+                <div className="bg-peach-50 border-x border-b border-peach-100 rounded-b-2xl h-4"></div>
+                <div></div>
+                <div></div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -345,6 +453,7 @@ export default function App() {
       <main>
         <Hero />
         <Features />
+        <Comparison />
         <HowItWorks />
         <FAQ />
       </main>
