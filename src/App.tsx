@@ -58,11 +58,11 @@ function Hero() {
             Стабильная работа без перебоев
           </span>
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 tracking-tight mb-8">
-            Безопасный VPN <br className="hidden sm:block" />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-peach-500 to-peach-700">на высоких скоростях с PersikVPN</span>
+            Надежный ВПН <br className="hidden sm:block" />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-peach-500 to-peach-700">для андроид и айфона с PersikVPN</span>
           </h1>
           <p className="text-lg sm:text-xl text-gray-600 mb-10 leading-relaxed max-w-2xl mx-auto">
-            Быстрый, анонимный и надежный VPN прямо в Telegram. Наслаждайтесь высокой скоростью, смотрите видео в 4K и защищайте свои личные данные в один клик на iOS, Android и ПК.
+            Быстрый, анонимный и надежный VPN прямо в Telegram. Попробуйте наш впн бесплатно в тестовом периоде. Стабильная работа на iOS, Android и ПК в один клик.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a
@@ -121,8 +121,8 @@ function Features() {
     },
     {
       icon: <Smartphone className="w-6 h-6 text-peach-500" />,
-      title: "Максимально удобно",
-      description: "Никаких сложных регистраций. Настройка в 2 клика через удобного Telegram-бота для любого устройства."
+      title: "Впн для андроид и айфона",
+      description: "Универсальное решение для всех устройств. Настройка в 2 клика через удобного Telegram-бота для iOS, Android и Windows."
     }
   ];
 
@@ -273,7 +273,7 @@ function HowItWorks() {
     {
       number: "02",
       title: "Получите настройки",
-      description: "Бот моментально выдаст вам индивидуальный ключ доступа и подробную инструкцию для вашего устройства (iOS, Android, PC)."
+      description: "Бот моментально выдаст вам индивидуальный ключ доступа и подробную инструкцию для вашего впн для андроид, айфона или PC."
     },
     {
       number: "03",
@@ -355,11 +355,11 @@ function FAQ() {
       answer: "PersikVPN — это современный VPN-сервис для защиты личных данных в сети. Мы используем передовые протоколы шифрования, которые обеспечивают высокую скорость и стабильность соединения, скрывая ваш реальный IP-адрес и маскируя трафик от провайдеров."
     },
     {
-      question: "На каких устройствах работает ваш VPN (iOS, Android, Windows)?",
+      question: "На каких устройствах работает ваш впн для андроид и айфона?",
       answer: "Наш VPN работает практически на всех современных устройствах: смартфонах (Apple iPhone iOS, Android), компьютерах (Windows, macOS, Linux) и даже на некоторых роутерах. Бот выдаст подробную инструкцию по настройке для вашего устройства."
     },
     {
-      question: "Это бесплатно?",
+      question: "Есть ли бесплатный впн или тестовый период?",
       answer: "У нас есть тестовый период, чтобы вы могли оценить скорость и качество сервиса. Далее вы можете выбрать один из доступных премиум-тарифов, которые стоят дешевле чашки кофе в месяц."
     },
     {
