@@ -1,25 +1,34 @@
 import { motion } from 'motion/react';
 import { Shield, Zap, Globe, Smartphone, ChevronDown, Send, CheckCircle2, Check, X, Minus } from 'lucide-react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react-router-dom';
+import Blog from './pages/Blog';
+import Article from './pages/Article';
 
 const BOT_LINK = "https://t.me/persik_vpnbot?start=utm_SEO";
 
 function Navbar() {
+  const location = useLocation();
+  const isHome = location.pathname === '/';
+
+  const getHref = (hash: string) => isHome ? hash : `/${hash}`;
+
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-peach-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          <div className="flex items-center gap-2">
+          <Link to="/" className="flex items-center gap-2">
             <div className="w-8 h-8 bg-gradient-to-br from-peach-400 to-peach-600 rounded-full flex items-center justify-center text-white font-bold text-lg shadow-sm">
               P
             </div>
             <span className="font-bold text-xl tracking-tight text-gray-900">PersikVPN</span>
-          </div>
+          </Link>
           <div className="hidden md:flex items-center gap-8">
-            <a href="#features" className="text-sm font-medium text-gray-600 hover:text-peach-600 transition-colors">Преимущества</a>
-            <a href="#comparison" className="text-sm font-medium text-gray-600 hover:text-peach-600 transition-colors">Сравнение</a>
-            <a href="#how-it-works" className="text-sm font-medium text-gray-600 hover:text-peach-600 transition-colors">Как начать</a>
-            <a href="#faq" className="text-sm font-medium text-gray-600 hover:text-peach-600 transition-colors">Вопросы</a>
+            <a href={getHref('#features')} className="text-sm font-medium text-gray-600 hover:text-peach-600 transition-colors">Преимущества</a>
+            <a href={getHref('#comparison')} className="text-sm font-medium text-gray-600 hover:text-peach-600 transition-colors">Сравнение</a>
+            <a href={getHref('#how-it-works')} className="text-sm font-medium text-gray-600 hover:text-peach-600 transition-colors">Как начать</a>
+            <a href={getHref('#faq')} className="text-sm font-medium text-gray-600 hover:text-peach-600 transition-colors">Вопросы</a>
+            <Link to="/blog" className="text-sm font-medium text-gray-600 hover:text-peach-600 transition-colors">Блог</Link>
           </div>
           <div>
             <a 
@@ -446,19 +455,42 @@ function Footer() {
   );
 }
 
+function Home() {
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash) {
+      const element = document.getElementById(location.hash.replace('#', ''));
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  }, [location]);
+
+  return (
+    <main>
+      <Hero />
+      <Features />
+      <Comparison />
+      <HowItWorks />
+      <FAQ />
+    </main>
+  );
+}
+
 export default function App() {
   return (
-    <div className="min-h-screen bg-white font-sans selection:bg-peach-200 selection:text-peach-900">
-      <Navbar />
-      <main>
-        <Hero />
-        <Features />
-        <Comparison />
-        <HowItWorks />
-        <FAQ />
-      </main>
-      <Footer />
-    </div>
+    <Router>
+      <div className="min-h-screen bg-white font-sans selection:bg-peach-200 selection:text-peach-900">
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:slug" element={<Article />} />
+        </Routes>
+        <Footer />
+      </div>
+    </Router>
   );
 }
 
